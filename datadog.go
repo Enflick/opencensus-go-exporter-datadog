@@ -44,7 +44,7 @@ func (e *Exporter) ExportSpan(s *trace.SpanData) {
 // order to not lose any tracing data. Only call Stop once per exporter. Repeated calls
 // will cause panic.
 func (e *Exporter) Stop() {
-	e.statsExporter.client.Close()
+	_ = e.statsExporter.client.Close()
 	e.traceExporter.stop()
 }
 
